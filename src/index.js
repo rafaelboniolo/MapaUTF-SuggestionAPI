@@ -48,9 +48,17 @@ const sugestSchema= new mongoose.Schema({
 //Model criar uma coleção em db chamado sugestao
 const Sugest = mongoose.model('sugest', sugestSchema) 
 
-server.get('/java/sugests', async (req, res, next)=>{
+server.get('/java/sugests/:start/:end', async (req, res, next)=>{
+    
+    const {start, end} = req.params;
+    
     try {
-        const sugestoes = await Sugest.find().sort({rating: -1});
+        const sugestoes = await Sugest.find({
+            date: {
+                $gt:  start,
+                $lt:  end
+            }
+        }).sort({rating: -1});
         res.send(sugestoes)
     } catch (error) {
         console.log(error);
