@@ -84,7 +84,7 @@ server.post('/java/sugestP', async (req,res,next)=>{
     
 })
 
-server.listen(3002, ()=>{ //indicar a porta para requisições
+server.listen(process.env.PORT||3002, ()=>{ //indicar a porta para requisições
     console.log('Restify listening on port 3002')
 })
 
