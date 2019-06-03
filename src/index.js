@@ -5,7 +5,8 @@ const corsMiddleware = require("restify-cors-middleware");
 const cors = corsMiddleware({  
     origins: ["*"],
     allowHeaders: ["Authorization"],
-    exposeHeaders: ["Authorization"]
+    exposeHeaders: ["Authorization"],
+    allowMethods:["*"]
 });
 
 mongoose.connect('mongodb+srv://willsombra:will1994@cluster0-l6hgl.mongodb.net/test', { // conectar ao mongoDB
