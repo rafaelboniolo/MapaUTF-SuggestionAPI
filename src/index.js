@@ -6,8 +6,11 @@ const cors = corsMiddleware({
     origins: ["*"],
     allowHeaders: ["Authorization"],
     exposeHeaders: ["Authorization"],
-    allowMethods:["*"]
+    allowMethods:["Authorization"]
+
 });
+
+
 
 mongoose.connect('mongodb+srv://willsombra:will1994@cluster0-l6hgl.mongodb.net/test', { // conectar ao mongoDB
     useNewUrlParser: true, useCreateIndex: true
@@ -17,6 +20,8 @@ const server = restify.createServer({ // método para criar servidor
     name:'my-rest-api', // nome do servidor
     version:'1.0.0'
 })
+
+
 
 server.pre(cors.preflight);  
 server.use(cors.actual);  
