@@ -12,7 +12,7 @@ const cors = corsMiddleware({
 
 
 
-mongoose.connect('mongodb+srv://willsombra:will1994@cluster0-l6hgl.mongodb.net/test', { // conectar ao mongoDB
+mongoose.connect('***********************************', { // conectar ao mongoDB
     useNewUrlParser: true, useCreateIndex: true
 })
     
@@ -101,19 +101,3 @@ server.post('/java/sugestP', async (req,res,next)=>{
 server.listen(process.env.PORT||3002, ()=>{ //indicar a porta para requisições
     console.log('Restify listening on port 3002')
 })
-
-
-function auth (req, res, next){
-    key = "ISYDGBUAIDYUASDBASUDBAISUBD"
-    if(!req.headers.authorization){
-        console.log("Request rejected : No token provider");
-        return res.json({err:"No token provider"});
-    }
-        
-    if (key != req.headers.authorization){
-        console.log("Request rejected : Token error");
-        return res.json({err:"Token error"})
-    }
-    
-    next();
-}
